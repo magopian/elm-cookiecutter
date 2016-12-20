@@ -25,13 +25,13 @@ type Msg
 
 
 type alias Model =
-    { data : String
+    { name : String
     }
 
 
 init : ( Model, Cmd Msg )
 init =
-    Model "hello world" ! []
+    ( Model "world", Cmd.none )
 
 
 
@@ -42,7 +42,7 @@ update : Msg -> Model -> ( Model, Cmd Msg )
 update message model =
     case message of
         Noop ->
-            model ! []
+            ( model, Cmd.none )
 
 
 
@@ -60,4 +60,4 @@ subscriptions model =
 
 view : Model -> Html.Html Msg
 view model =
-    Html.text model.data
+    Html.text ("Hello " ++ model.name)
